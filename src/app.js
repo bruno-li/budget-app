@@ -3,10 +3,6 @@ import { UIController } from './ui-controller';
 import './vendor';
 import './style.scss';
 
-const Expense = (id, description, value) => {
-	return { id, description, value };
-};
-
 const controler = (function(budgetCtrl, UICtrl) {
 	let setupEventListeners = () => {
 		// DOM object elements from ui-controller
@@ -24,8 +20,20 @@ const controler = (function(budgetCtrl, UICtrl) {
 	};
 
 	const addItem = () => {
+		//variables declarations
+		let input, newItem;
 		// get fields input data
-		const input = UICtrl.getInput();
+		input = UICtrl.getInput();
+
+		budgetController.testing();
+
+		// add the item to the budget controller
+		newItem = budgetCtrl.addItem(input.typeOfBudget, input.budgetDesc, input.budgetValue);
+		// add the item to the UI
+
+		// calculate the budget
+
+		// display budget on the UI
 	};
 
 	return {
