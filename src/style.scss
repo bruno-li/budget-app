@@ -1,3 +1,6 @@
+$fa-font-path: "/node_modules/@fortawesome/fontawesome-free/webfonts";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+
 /**********************************************
 *** GENERAL
 **********************************************/
@@ -162,7 +165,7 @@ body {
 }
 
 .add__btn {
-	font-size: 35px;
+	font-size: 30px;
 	background: none;
 	border: none;
 	color: #28b9b5;
