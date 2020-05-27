@@ -1,13 +1,19 @@
 const budgetController = (function() {
-	let x = 23;
-
-	const add = (a) => {
-		return x + a;
+	const Expense = (id, description, value) => {
+		return { id, description, value };
+	};
+	const Income = (id, description, value) => {
+		return { id, description, value };
 	};
 
-	return {
-		publicTest: (b) => {
-			console.log(add(b));
+	const data = {
+		allItems: {
+			expenses: [],
+			incomes: []
+		},
+		totals: {
+			totalExpense: 0,
+			totalIncome: 0
 		}
 	};
 })();

@@ -3,6 +3,10 @@ import { UIController } from './ui-controller';
 import './vendor';
 import './style.scss';
 
+const Expense = (id, description, value) => {
+	return { id, description, value };
+};
+
 const controler = (function(budgetCtrl, UICtrl) {
 	let setupEventListeners = () => {
 		// DOM object elements from ui-controller
