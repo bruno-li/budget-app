@@ -19,17 +19,18 @@ const controler = (function(budgetCtrl, UICtrl) {
 		});
 	};
 
+	// main method that calls the modules methods to create a new item
 	const addItem = () => {
 		//variables declarations
 		let input, newItem;
 		// get fields input data
 		input = UICtrl.getInput();
 
-		budgetController.testing();
-
 		// add the item to the budget controller
 		newItem = budgetCtrl.addItem(input.typeOfBudget, input.budgetDesc, input.budgetValue);
+
 		// add the item to the UI
+		UIController.addListItem(newItem, input.typeOfBudget);
 
 		// calculate the budget
 

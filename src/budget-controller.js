@@ -27,6 +27,7 @@ const budgetController = (function() {
 			} else {
 				ID = 0;
 			}
+
 			// check what type value user is adding, expense or income
 			if (type === 'exp') {
 				newItem = Expense(ID, desc, val);
