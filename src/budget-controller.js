@@ -39,6 +39,10 @@ const budgetController = (function() {
 
 			// return element
 			return newItem;
+		},
+
+		testing: () => {
+			console.log(data);
 		}
 	};
 })();

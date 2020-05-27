@@ -19,22 +19,34 @@ const controler = (function(budgetCtrl, UICtrl) {
 		});
 	};
 
+	const updateBudget = () => {
+		// calculate the budget
+		// return budget
+		// display budget on the UI
+	};
+
 	// main method that calls the modules methods to create a new item
 	const addItem = () => {
 		//variables declarations
 		let input, newItem;
+
 		// get fields input data
 		input = UICtrl.getInput();
 
-		// add the item to the budget controller
-		newItem = budgetCtrl.addItem(input.typeOfBudget, input.budgetDesc, input.budgetValue);
+		if (input.budgetDesc !== '' && !isNaN(input.budgetValue) && input.budgetValue > 0) {
+			// add the item to the budget controller
+			newItem = budgetCtrl.addItem(input.typeOfBudget, input.budgetDesc, input.budgetValue);
 
-		// add the item to the UI
-		UIController.addListItem(newItem, input.typeOfBudget);
+			// add the item to the UI
+			UIController.addListItem(newItem, input.typeOfBudget);
 
-		// calculate the budget
+			// clear fields after user input an item
+			UIController.clearFields();
 
-		// display budget on the UI
+			// calculate and update budget
+			updateBudget();
+			// budgetController.testing();
+		}
 	};
 
 	return {

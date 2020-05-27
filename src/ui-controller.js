@@ -8,6 +8,7 @@ export const UIController = (function() {
 		incomeContainer: '.income__list',
 		expensesContainer: '.expenses__list'
 	};
+
 	return {
 		getInput: () => {
 			return {
@@ -15,8 +16,8 @@ export const UIController = (function() {
 				typeOfBudget: document.querySelector(DOMstrings.inputType).value,
 				// description of the income or expense
 				budgetDesc: document.querySelector(DOMstrings.inputDesc).value,
-				// the amount
-				budgetValue: document.querySelector(DOMstrings.inputAddValue).value
+				// get the amount and parse to float
+				budgetValue: parseFloat(document.querySelector(DOMstrings.inputAddValue).value)
 			};
 		},
 
@@ -52,6 +53,21 @@ export const UIController = (function() {
 			//replace the placeholder text with data
 			//insert html into the DOM
 			document.querySelector(element).insertAdjacentHTML('beforeend', html);
+		},
+
+		clearFields: () => {
+			let fields, fieldsArr;
+			// selects both input fields
+			fields = document.querySelectorAll(`${DOMstrings.inputDesc} , ${DOMstrings.inputAddValue}`);
+			console.log(fields);
+			// converting the nodelist into an array
+			fieldsArr = Array.prototype.slice.call(fields);
+			// clear the fields
+			fieldsArr.forEach((field) => {
+				field.value = '';
+			});
+			// focus back to description input
+			fieldsArr[0].focus();
 		},
 
 		getDOMstrings: () => {
