@@ -54,6 +54,20 @@ const budgetController = (function() {
 			return newItem;
 		},
 
+		deleteItem: (type, id) => {
+			let ids, index;
+			// create an array with all unique ids
+			ids = data.allItems[type].map((item) => {
+				return item.id;
+			});
+			// get the index of the id that needs to be delete
+			index = ids.indexOf(id);
+			//check if id exists, if does, delete
+			if (index !== -1) {
+				data.allItems[type].splice(index, 1);
+			}
+		},
+
 		calculateBudget: () => {
 			//calculate total income and expenses
 			calculateTotal('exp');

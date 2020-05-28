@@ -24,13 +24,13 @@ const controler = (function(budgetCtrl, UICtrl) {
 
 	const updateBudget = () => {
 		// calculate the budget
-		budgetController.calculateBudget();
+		budgetCtrl.calculateBudget();
 
 		// return budget
-		let budget = budgetController.getBudget();
+		let budget = budgetCtrl.getBudget();
 
 		// display budget on the UI
-		UIController.displayBudget(budget);
+		UICtrl.displayBudget(budget);
 	};
 
 	// main method that calls the modules methods to create a new item
@@ -46,10 +46,10 @@ const controler = (function(budgetCtrl, UICtrl) {
 			newItem = budgetCtrl.addItem(input.typeOfBudget, input.budgetDesc, input.budgetValue);
 
 			// add the item to the UI
-			UIController.addListItem(newItem, input.typeOfBudget);
+			UICtrl.addListItem(newItem, input.typeOfBudget);
 
 			// clear fields after user input an item
-			UIController.clearFields();
+			UICtrl.clearFields();
 
 			// calculate and update budget
 			updateBudget();
@@ -58,16 +58,17 @@ const controler = (function(budgetCtrl, UICtrl) {
 	};
 
 	const deleteItem = (item) => {
-		let itemID, splitID, type, ID;
+		let itemID, splitID, type, id;
 
 		itemID = item.target.parentNode.parentNode.parentNode.parentNode.id;
 		// split the element id to retrive the number id
 		if (itemID) {
 			splitID = itemID.split('-');
 			type = splitID[0];
-			ID = splitID[1];
+			id = parseInt(splitID[1]);
 
 			// delete item from data structure on budget-controller
+			budgetCtrl.deleteItem(type, id);
 
 			// delete item from the UI
 
@@ -79,7 +80,7 @@ const controler = (function(budgetCtrl, UICtrl) {
 		init: () => {
 			console.log('app started');
 			// initialize fields to 0
-			UIController.displayBudget({
+			UICtrl.displayBudget({
 				budget: 0,
 				totalInc: 0,
 				totalExp: 0,
