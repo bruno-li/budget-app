@@ -22,11 +22,12 @@ const controler = (function(budgetCtrl, UICtrl) {
 	const updateBudget = () => {
 		// calculate the budget
 		budgetController.calculateBudget();
+
 		// return budget
 		let budget = budgetController.getBudget();
 
 		// display budget on the UI
-		console.log(budget);
+		UIController.displayBudget(budget);
 	};
 
 	// main method that calls the modules methods to create a new item
@@ -56,6 +57,13 @@ const controler = (function(budgetCtrl, UICtrl) {
 	return {
 		init: () => {
 			console.log('app started');
+			// initialize fields to 0
+			UIController.displayBudget({
+				budget: 0,
+				totalInc: 0,
+				totalExp: 0,
+				percentage: -1
+			});
 			setupEventListeners();
 		}
 	};

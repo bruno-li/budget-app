@@ -6,7 +6,11 @@ export const UIController = (function() {
 		inputAddValue: '.add__value',
 		addValue: '.add__btn',
 		incomeContainer: '.income__list',
-		expensesContainer: '.expenses__list'
+		expensesContainer: '.expenses__list',
+		budgetLabel: '.budget__value',
+		incomeLabel: '.budget__income--value',
+		expenseLabel: '.budget__expenses--value',
+		percentageLabel: '.budget__expenses--percentage'
 	};
 
 	return {
@@ -68,6 +72,19 @@ export const UIController = (function() {
 			});
 			// focus back to description input
 			fieldsArr[0].focus();
+		},
+		// display values in the DOM
+		displayBudget: (obj) => {
+			document.querySelector(DOMstrings.budgetLabel).textContent = obj.budget;
+			document.querySelector(DOMstrings.incomeLabel).textContent = obj.totalInc;
+			document.querySelector(DOMstrings.expenseLabel).textContent = obj.totalExp;
+
+			//display % only if available
+			if (obj.percentage > 0) {
+				document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage + '%';
+			} else {
+				document.querySelector(DOMstrings.percentageLabel).textContent = '---';
+			}
 		},
 
 		getDOMstrings: () => {
