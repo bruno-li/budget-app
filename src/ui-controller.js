@@ -59,7 +59,7 @@ export const UIController = (function() {
 			let fields, fieldsArr;
 			// selects both input fields
 			fields = document.querySelectorAll(`${DOMstrings.inputDesc} , ${DOMstrings.inputAddValue}`);
-			console.log(fields);
+
 			// converting the nodelist into an array
 			fieldsArr = Array.prototype.slice.call(fields);
 			// clear the fields

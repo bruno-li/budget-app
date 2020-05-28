@@ -6,6 +6,16 @@ const budgetController = (function() {
 	const Income = (id, description, value) => {
 		return { id, description, value };
 	};
+
+	const calculateTotal = (type) => {
+		// get the sum of either inc or exp and assign it to totals obj
+		let sum = data.allItems[type].reduce((acc, item) => {
+			acc += item.value;
+			return acc;
+		}, 0);
+
+		data.totals[type] = sum;
+	};
 	// data structure to store user input
 	const data = {
 		allItems: {
@@ -13,10 +23,13 @@ const budgetController = (function() {
 			inc: []
 		},
 		totals: {
-			totalExpense: 0,
-			totalIncome: 0
-		}
+			exp: 0,
+			inc: 0
+		},
+		budget: 0,
+		percentage: -1
 	};
+
 	// public method
 	return {
 		addItem: (type, desc, val) => {
@@ -39,6 +52,28 @@ const budgetController = (function() {
 
 			// return element
 			return newItem;
+		},
+
+		calculateBudget: () => {
+			//calculate total income and expenses
+			calculateTotal('exp');
+			calculateTotal('inc');
+			//calculate budget: income - expenses
+			data.budget = data.totals.inc - data.totals.exp;
+			//calculate percentage of income that was spent
+			if (data.totals.inc > 0) {
+				data.percentage = Math.round(data.totals.exp / data.totals.inc * 100);
+			} else {
+				data.percentage = -1;
+			}
+		},
+		getBudget: () => {
+			return {
+				budget: data.budget,
+				totalInc: data.totals.inc,
+				totalExp: data.totals.exp,
+				percentage: data.percentage
+			};
 		},
 
 		testing: () => {

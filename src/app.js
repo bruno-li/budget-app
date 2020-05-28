@@ -21,8 +21,12 @@ const controler = (function(budgetCtrl, UICtrl) {
 
 	const updateBudget = () => {
 		// calculate the budget
+		budgetController.calculateBudget();
 		// return budget
+		let budget = budgetController.getBudget();
+
 		// display budget on the UI
+		console.log(budget);
 	};
 
 	// main method that calls the modules methods to create a new item
