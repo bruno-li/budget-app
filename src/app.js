@@ -17,6 +17,9 @@ const controler = (function(budgetCtrl, UICtrl) {
 				addItem();
 			}
 		});
+
+		// event delegation for deleting an item
+		document.querySelector(DOM.container).addEventListener('click', deleteItem);
 	};
 
 	const updateBudget = () => {
@@ -51,6 +54,24 @@ const controler = (function(budgetCtrl, UICtrl) {
 			// calculate and update budget
 			updateBudget();
 			// budgetController.testing();
+		}
+	};
+
+	const deleteItem = (item) => {
+		let itemID, splitID, type, ID;
+
+		itemID = item.target.parentNode.parentNode.parentNode.parentNode.id;
+		// split the element id to retrive the number id
+		if (itemID) {
+			splitID = itemID.split('-');
+			type = splitID[0];
+			ID = splitID[1];
+
+			// delete item from data structure on budget-controller
+
+			// delete item from the UI
+
+			// update and show the new budget
 		}
 	};
 

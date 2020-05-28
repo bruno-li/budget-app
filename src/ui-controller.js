@@ -10,7 +10,8 @@ export const UIController = (function() {
 		budgetLabel: '.budget__value',
 		incomeLabel: '.budget__income--value',
 		expenseLabel: '.budget__expenses--value',
-		percentageLabel: '.budget__expenses--percentage'
+		percentageLabel: '.budget__expenses--percentage',
+		container: '.container'
 	};
 
 	return {
@@ -31,24 +32,24 @@ export const UIController = (function() {
 			if (type === 'inc') {
 				element = DOMstrings.incomeContainer;
 				//create html string with placeholder text
-				html = ` <div class="item clearfix" id="income-${newItemObj.id}">
+				html = ` <div class="item clearfix" id="inc-${newItemObj.id}">
                             <div class="item__description">${newItemObj.description}</div>
                             <div class="right clearfix">
                                 <div class="item__value">${newItemObj.value}</div>
                                 <div class="item__delete">
-                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                    <button class="item__delete--btn"><i class="far fa-times-circle"></i></button>
                                 </div>
                             </div>
                         </div>`;
 			} else if (type === 'exp') {
 				element = DOMstrings.expensesContainer;
-				html = ` <div class="item clearfix" id="expense-${newItemObj.id}">
+				html = ` <div class="item clearfix" id="exp-${newItemObj.id}">
                             <div class="item__description">${newItemObj.description}</div>
                             <div class="right clearfix">
                                 <div class="item__value">${newItemObj.value}</div>
                                 <div class="item__percentage">21%</div>
                                 <div class="item__delete">
-                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                    <button class="item__delete--btn"><i class="far fa-times-circle"></i></button>
                                 </div>
                             </div>
                  </div>`;
