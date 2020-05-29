@@ -1,8 +1,24 @@
 const budgetController = (function() {
 	//factory functions for Expense and Income
 	const Expense = (id, description, value) => {
-		return { id, description, value };
+		// set default percentage value
+		let percentage = -1;
+
+		const calcPercentage = (totalIncome) => {
+			if (totalIncome > 0) {
+				percentage = Math.round(value / totalIncome * 100);
+			} else {
+				percentage = -1;
+			}
+		};
+
+		const getPercentage = () => {
+			return percentage;
+		};
+
+		return { id, description, value, calcPercentage, getPercentage };
 	};
+
 	const Income = (id, description, value) => {
 		return { id, description, value };
 	};
@@ -81,6 +97,19 @@ const budgetController = (function() {
 			} else {
 				data.percentage = -1;
 			}
+		},
+
+		calculatePercentage: () => {
+			data.allItems.exp.forEach((item) => {
+				item.calcPercentage(data.totals.inc);
+			});
+		},
+
+		getPercentages: () => {
+			let allPerc = data.allItems.exp.map((item) => {
+				return item.getPercentage();
+			});
+			return allPerc;
 		},
 
 		getBudget: () => {

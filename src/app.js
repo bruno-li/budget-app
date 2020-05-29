@@ -22,6 +22,7 @@ const controler = (function(budgetCtrl, UICtrl) {
 		document.querySelector(DOM.container).addEventListener('click', deleteItem);
 	};
 
+	// function to update the budget and display  in the DOM
 	const updateBudget = () => {
 		// calculate the budget
 		budgetCtrl.calculateBudget();
@@ -31,6 +32,16 @@ const controler = (function(budgetCtrl, UICtrl) {
 
 		// display budget on the UI
 		UICtrl.displayBudget(budget);
+	};
+
+	// funciton to update the budget percentage and display in the DOM
+	const updatePercentage = () => {
+		// calculate the percentage
+		budgetCtrl.calculatePercentage();
+		//read percentage from budget controller data structure
+		let percentages = budgetCtrl.getPercentages();
+		// update the percentage in the UI
+		console.log(percentages);
 	};
 
 	// main method that calls the modules methods to create a new item
@@ -54,6 +65,9 @@ const controler = (function(budgetCtrl, UICtrl) {
 			// calculate and update budget
 			updateBudget();
 			// budgetController.testing();
+
+			// calculate and update percentage
+			updatePercentage();
 		}
 	};
 
@@ -75,7 +89,8 @@ const controler = (function(budgetCtrl, UICtrl) {
 
 			// update and show the new budget
 			updateBudget();
-			budgetCtrl.testing();
+			// calculate and update percentage
+			updatePercentage();
 		}
 	};
 
