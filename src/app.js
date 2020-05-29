@@ -41,7 +41,7 @@ const controler = (function(budgetCtrl, UICtrl) {
 		//read percentage from budget controller data structure
 		let percentages = budgetCtrl.getPercentages();
 		// update the percentage in the UI
-		console.log(percentages);
+		UICtrl.displayPercentage(percentages);
 	};
 
 	// main method that calls the modules methods to create a new item
