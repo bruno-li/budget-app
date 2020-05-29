@@ -7,6 +7,7 @@ const budgetController = (function() {
 		return { id, description, value };
 	};
 
+	// calculate the total of income or expenses
 	const calculateTotal = (type) => {
 		// get the sum of either inc or exp and assign it to totals obj
 		let sum = data.allItems[type].reduce((acc, item) => {
@@ -16,7 +17,7 @@ const budgetController = (function() {
 
 		data.totals[type] = sum;
 	};
-	// data structure to store user input
+	// data structure to store user data
 	const data = {
 		allItems: {
 			exp: [],
@@ -30,7 +31,7 @@ const budgetController = (function() {
 		percentage: -1
 	};
 
-	// public method
+	// public methods
 	return {
 		addItem: (type, desc, val) => {
 			let newItem, ID;
@@ -81,6 +82,7 @@ const budgetController = (function() {
 				data.percentage = -1;
 			}
 		},
+
 		getBudget: () => {
 			return {
 				budget: data.budget,

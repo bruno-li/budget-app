@@ -4,7 +4,7 @@ import './vendor';
 import './style.scss';
 
 const controler = (function(budgetCtrl, UICtrl) {
-	let setupEventListeners = () => {
+	const setupEventListeners = () => {
 		// DOM object elements from ui-controller
 		let DOM = UICtrl.getDOMstrings();
 		let addBtn = document.querySelector(DOM.addValue);
@@ -71,11 +71,15 @@ const controler = (function(budgetCtrl, UICtrl) {
 			budgetCtrl.deleteItem(type, id);
 
 			// delete item from the UI
+			UICtrl.deleteListItem(itemID);
 
 			// update and show the new budget
+			updateBudget();
+			budgetCtrl.testing();
 		}
 	};
 
+	// public
 	return {
 		init: () => {
 			console.log('app started');

@@ -60,6 +60,11 @@ export const UIController = (function() {
 			document.querySelector(element).insertAdjacentHTML('beforeend', html);
 		},
 
+		deleteListItem: (selectorID) => {
+			let element = document.getElementById(selectorID);
+			element.parentNode.removeChild(element);
+		},
+
 		clearFields: () => {
 			let fields, fieldsArr;
 			// selects both input fields
