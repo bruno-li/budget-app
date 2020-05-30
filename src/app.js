@@ -20,6 +20,9 @@ const controler = (function(budgetCtrl, UICtrl) {
 
 		// event delegation for deleting an item
 		document.querySelector(DOM.container).addEventListener('click', deleteItem);
+
+		// change the ui to different color if inc or exp
+		document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changeFocusType);
 	};
 
 	// function to update the budget and display  in the DOM

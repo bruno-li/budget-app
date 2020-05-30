@@ -158,6 +158,18 @@ export const UIController = (function() {
 			document.querySelector(DOMstrings.monthLabel).innerHTML = `${months[currentMonth]} , ${year.getFullYear()}`;
 		},
 
+		changeFocusType: () => {
+			let fields = document.querySelectorAll(
+				`${DOMstrings.inputType},
+				${DOMstrings.inputDesc},
+				${DOMstrings.inputAddValue}`
+			);
+			[ ...fields ].forEach((field) => {
+				field.classList.toggle('red-focus');
+			});
+			document.querySelector(DOMstrings.addValue).classList.toggle('red');
+		},
+
 		getDOMstrings: () => {
 			return DOMstrings;
 		}
