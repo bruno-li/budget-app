@@ -99,7 +99,7 @@ const budgetController = (function() {
 			}
 		},
 
-		calculatePercentage: () => {
+		n: () => {
 			data.allItems.exp.forEach((item) => {
 				item.calcPercentage(data.totals.inc);
 			});

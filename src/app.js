@@ -106,6 +106,7 @@ const controler = (function(budgetCtrl, UICtrl) {
 				percentage: -1
 			});
 			setupEventListeners();
+			UICtrl.getMonth();
 		}
 	};
 })(budgetController, UIController);
